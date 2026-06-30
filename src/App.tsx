@@ -1268,16 +1268,16 @@ export default function App() {
             <div className="md:col-span-5 space-y-4 text-left">
               <div className="flex items-center gap-3">
                 {/* Square Logo with F */}
-                <div className="h-[44px] w-[44px] bg-black rounded-lg flex items-center justify-center shrink-0 border border-white/10 shadow-xs">
-                  <span className="text-[#cccc00] font-serif font-bold text-xl leading-none select-none">
+                <div className="h-[44px] w-[44px] bg-black rounded-lg flex items-center justify-center shrink-0 border border-white/10 shadow-xs" style={{ backgroundColor: '#cccc00' }}>
+                  <span className="text-[#cccc00] font-serif font-bold text-xl leading-none select-none" style={{ backgroundColor: '#cccc00', color: '#000000', fontSize: '32px' }}>
                     F
                   </span>
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="font-serif font-bold text-2xl tracking-tight text-white leading-none">
+                  <span className="font-serif font-bold text-2xl tracking-tight text-white leading-none" style={{ fontSize: '26px' }}>
                     FINET
                   </span>
-                  <span className="font-mono text-3xs text-brand-accent tracking-widest uppercase mt-0.5 font-bold">
+                  <span className="font-mono text-3xs text-brand-accent tracking-widest uppercase mt-0.5 font-bold" style={{ fontFamily: 'Arial', fontWeight: 'normal', fontSize: '12px' }}>
                     Socio-Finanzas
                   </span>
                 </div>
@@ -1326,7 +1326,7 @@ export default function App() {
 
           {/* Legal Footnote copies */}
           <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-3xs text-white/40 text-center font-mono">
-            <div className="text-center text-[13px] text-[#b6b6b6]">
+            <div className="text-center text-[13px] text-[#b6b6b6]" style={{ width: '370px' }}>
               &copy; {new Date().getFullYear()} FINET Orientación Socio-Financiera. Todos los derechos reservados.
             </div>
             <div className="max-w-2xl text-justify leading-relaxed font-light font-sans text-[14px]">
