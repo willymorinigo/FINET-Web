@@ -1,0 +1,6 @@
+{
+  "name": "FINET",
+  "description": "Un espacio de orientación socio-financiera para construir independencia financiera a través de una nueva relación con el dinero.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
