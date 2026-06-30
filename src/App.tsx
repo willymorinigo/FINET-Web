@@ -342,12 +342,15 @@ export default function App() {
           </div>
 
           {/* INFINITE RUNNING MARQUEE - MINIMALIST AND HIGH IMPACT */}
-          <div className="w-full bg-brand-charcoal py-7 border-t border-brand-border/20 overflow-hidden relative select-none">
+          <div 
+            className="w-full bg-brand-charcoal border-t border-brand-border/20 overflow-hidden relative select-none flex items-center"
+            style={{ height: '47px', fontSize: '11px' }}
+          >
             {/* Absolute side fades for elegant entry/exit of text */}
             <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-brand-charcoal to-transparent z-10 pointer-events-none" />
             <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-brand-charcoal to-transparent z-10 pointer-events-none" />
             
-            <div className="animate-marquee whitespace-nowrap flex items-center gap-16 text-white font-serif uppercase tracking-wider text-xl md:text-2xl lg:text-3xl">
+            <div className="animate-marquee whitespace-nowrap flex items-center gap-16 text-white font-serif uppercase tracking-wider">
               {/* Loop 1 */}
               <span className="flex items-center gap-4">
                 TEMPLANZA <span className="text-[#cccc00] font-bold font-sans">★</span>
@@ -358,7 +361,7 @@ export default function App() {
               <span className="flex items-center gap-4">
                 EDUCACIÓN CON PROPÓSITO <span className="text-[#cccc00] font-bold font-sans">★</span>
               </span>
-              <span className="flex items-center gap-4">
+              <span className="flex items-center gap-4" style={{ fontSize: '11px' }}>
                 INVERSIÓN DE LARGO PLAZO <span className="text-[#cccc00] font-bold font-sans">★</span>
               </span>
               <span className="flex items-center gap-4">
@@ -378,7 +381,7 @@ export default function App() {
               <span className="flex items-center gap-4">
                 EDUCACIÓN CON PROPÓSITO <span className="text-[#cccc00] font-bold font-sans">★</span>
               </span>
-              <span className="flex items-center gap-4">
+              <span className="flex items-center gap-4" style={{ fontSize: '11px' }}>
                 INVERSIÓN DE LARGO PLAZO <span className="text-[#cccc00] font-bold font-sans">★</span>
               </span>
               <span className="flex items-center gap-4">
