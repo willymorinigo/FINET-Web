@@ -233,7 +233,7 @@ export default function ContactForm({ initialMessage = "", origin = "Formulario 
 
           <div className="flex justify-center items-center gap-1.5 text-3xs text-brand-charcoal/60 font-mono text-center pt-2">
             <ShieldCheck className="w-3.5 h-3.5 text-brand-accent shrink-0" />
-            <span>Al enviar autorizás a FINET a responderte de forma personalizada y segura.</span>
+            <span style={{ fontFamily: 'Arial', fontSize: '13px' }}>Al enviar autorizás a FINET a responderte de forma personalizada y segura.</span>
           </div>
 
         </form>

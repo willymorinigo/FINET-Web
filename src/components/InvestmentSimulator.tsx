@@ -179,10 +179,16 @@ export default function InvestmentSimulator() {
             <div className="flex items-start gap-2.5">
               <ShieldCheck className="w-4 h-4 text-brand-accent shrink-0 mt-0.5" />
               <div className="space-y-1">
-                <span className="block text-xs font-bold text-brand-charcoal uppercase tracking-wider font-mono">
+                <span 
+                  className="block text-xs font-bold text-brand-charcoal uppercase tracking-wider font-mono"
+                  style={{ fontFamily: 'Arial', fontWeight: 'bold', fontSize: '14px' }}
+                >
                   La Octava Maravilla
                 </span>
-                <p className="text-xs text-brand-charcoal/70 leading-relaxed font-light">
+                <p 
+                  className="text-xs text-brand-charcoal/70 leading-relaxed font-light"
+                  style={{ fontSize: '13px' }}
+                >
                   Observá cómo en los primeros años el crecimiento parece lineal, pero luego del año 10 la "bola de nieve" de intereses ganados supera con creces lo que vos depositaste de tu bolsillo. Eso es el interés compuesto trabajando en calma.
                 </p>
               </div>
