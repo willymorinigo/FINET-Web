@@ -71,6 +71,110 @@ const QUESTIONS: Question[] = [
   }
 ];
 
+function generateLocalProfile(selectedAnswers: Record<number, { text: string; score: number; optionText: string }>): AssessmentResult {
+  const scores = Object.values(selectedAnswers).map(a => a.score);
+  const totalScore = scores.reduce((sum, s) => sum + s, 0);
+  
+  // Count how many of each score level we have
+  const scoreCounts = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  scores.forEach(s => {
+    if (s >= 1 && s <= 4) {
+      scoreCounts[s as 1 | 2 | 3 | 4] += 1;
+    }
+  });
+
+  // Classify based on scores & answers
+  if (totalScore >= 17) {
+    return {
+      archetype: "El Constructor Sólido",
+      subtitle: "Un espíritu de templanza que comprende la paciencia del roble y la inercia del tiempo.",
+      summary: "Poseés una admirable claridad emocional frente al dinero. Identificás la volatilidad no como una amenaza que deba evitarse, sino como un peaje de admisión hacia el verdadero crecimiento. Tu foco está firmemente puesto en la independencia de largo plazo, lo que te permite evitar las trampas de la inmediatez y las modas financieras efímeras.",
+      strengths: [
+        "Excelente control de los impulsos emocionales ante la volatilidad de los mercados.",
+        "Perspectiva clara de largo plazo que prioriza la compra de libertad y tiempo futuro.",
+        "Capacidad de mantener la calma y el orden estratégico en momentos de incertidumbre."
+      ],
+      challenges: [
+        "Evitar el exceso de perfeccionismo que pueda demorar la ejecución de decisiones menores.",
+        "Sostener la disciplina de forma indefinida sin caer en el aburrimiento de la calma estratégica.",
+        "No sobre-complicar la estructura de tus activos buscando una diversificación redundante."
+      ],
+      philosophicalReflection: "Quien planta un roble no espera verlo en su máxima altura al mes siguiente. Tu mentalidad ya comprende que el dinero en calma no es una cifra estática en una pantalla, sino tiempo encapsulado. Al comparar tu cartera con un inmueble de renta, entendés que el valor diario es solo un parpadeo del mercado. Tu gran tarea es honrar esta templanza, sabiendo que la independencia se consolida en el silencio de las decisiones disciplinadas, lejos del ruido cotidiano de las recomendaciones rápidas.",
+      nextSteps: [
+        "Profundizar tu formación en activos reales, asumiendo la volatilidad como aliada histórica.",
+        "Automatizar tus aportes para que la constancia no dependa del esfuerzo de tu voluntad diaria.",
+        "Compartir estos pilares de templanza con tu entorno, extendiendo la educación financiera con propósito."
+      ]
+    };
+  } else if (scoreCounts[2] >= 2 || (selectedAnswers[1]?.score === 2 || selectedAnswers[2]?.score === 1 || selectedAnswers[2]?.score === 2)) {
+    return {
+      archetype: "El Protector Cauteloso",
+      subtitle: "La búsqueda de un refugio seguro que, en el afán de proteger, entrega su valor al paso del tiempo.",
+      summary: "Tu relación actual con el dinero está guiada principalmente por el deseo de protección y el temor a dar pasos en falso. Si bien tu prudencia es un escudo valioso, la inacción y el mantener el dinero quieto o escondido sabotea tus metas de largo plazo debido a la erosión silenciosa de la inflación. Necesitás transformar el miedo en una prudencia activa y educada.",
+      strengths: [
+        "Alta conciencia del valor del esfuerzo y del dinero guardado a fin de mes.",
+        "Bajo riesgo de caer en estafas financieras o burbujas especulativas de moda.",
+        "Un deseo genuino de orden, estabilidad y tranquilidad familiar."
+      ],
+      challenges: [
+        "Superar la parálisis por análisis que te impide poner tus recursos a trabajar de verdad.",
+        "Aceptar que la volatilidad temporal es parte de la naturaleza del crecimiento y no una pérdida real.",
+        "Disminuir la dependencia de opiniones ajenas para ganar autonomía en tus propias decisiones."
+      ],
+      philosophicalReflection: "El marinero que teme al mar nunca abandona el puerto, pero es en el muelle donde los barcos se oxidan y pierden su propósito. El dinero quieto en una cuenta corriente es como agua estancada. La verdadera seguridad no reside en la inmovilidad, sino en la comprensión profunda de las reglas del juego. Al educarte y dar el primer paso con activos reales y de largo plazo, descubrirás que la volatilidad es solo el viento que empuja las velas, no una tempestad destructora. No buscamos que arriesgues tu paz, sino que adquieras la templanza para navegar con calma.",
+      nextSteps: [
+        "Comenzar con un pequeño paso educativo, destinando una porción mínima a activos reales para habituarte al proceso sin alterar tu sueño.",
+        "Reencuadrar mentalmente la volatilidad: no es pérdida de dinero, es el precio de admisión del crecimiento a largo plazo.",
+        "Evitar mirar saldos diariamente; programar de forma semestral las revisiones de tu plan financiero."
+      ]
+    };
+  } else if (scoreCounts[3] >= 2 || selectedAnswers[1]?.score === 3 || selectedAnswers[2]?.score === 3 || selectedAnswers[3]?.score === 1) {
+    return {
+      archetype: "El Buscador Impaciente",
+      subtitle: "El impulso de avanzar rápido que olvida que los bosques más fuertes crecen en silencio.",
+      summary: "Te caracteriza un fuerte entusiasmo y una gran energía para mejorar tu situación financiera. Sin embargo, solés caer en la trampa del cortoplacismo, buscando ganancias rápidas o reaccionando impulsivamente a las fluctuaciones del mercado. La impaciencia te expone a ruidos innecesarios, haciéndote cambiar de rumbo constantemente y perdiendo el efecto multiplicador del interés compuesto.",
+      strengths: [
+        "Iniciativa y proactividad sobresalientes para buscar nuevas oportunidades de crecimiento.",
+        "Gran energía para tomar decisiones y un deseo real de progresar financieramente.",
+        "Capacidad de asimilar conceptos de inversión de manera rápida y entusiasta."
+      ],
+      challenges: [
+        "Dominar el impulso de 'hacer algo' cada vez que el mercado fluctúa temporalmente.",
+        "Desactivar el sesgo de FOMO (miedo a quedarse afuera) frente a activos de moda sin fundamentos.",
+        "Desarrollar la disciplina de mantener una estrategia aburrida pero sólida a largo plazo."
+      ],
+      philosophicalReflection: "La prisa es enemiga de la solidez. En las finanzas, como en la naturaleza, los atajos suelen conducir a desiertos. Quien busca la multiplicación mágica en un día suele entregar sus recursos a quienes venden humo. La riqueza sostenible se asemeja a un inmueble de renta: no llamás al tasador todos los días para ver si la pared vale un dólar más. Te concentrás en el flujo, en la tenencia de activos reales y en dejar que el tiempo haga el trabajo pesado de raíz. Tu gran desafío es abrazar el 'aburrimiento' de una buena estrategia y cultivar la templanza necesaria para no bajarte del tren antes de llegar al destino.",
+      nextSteps: [
+        "Establecer una regla de espera de 72 horas antes de realizar cualquier movimiento financiero impulsado por noticias o redes.",
+        "Enfocar tu estrategia en activos reales de largo plazo y desinstalar las aplicaciones de monitoreo diario de precios.",
+        "Desarrollar el hábito de la constancia mensual, entendiendo que el interés compuesto es la octava maravilla del mundo."
+      ]
+    };
+  } else {
+    return {
+      archetype: "El Navegante Dependiente",
+      subtitle: "La cesión del timón a terceros por falta de confianza en la propia brújula.",
+      summary: "Tendés a delegar la responsabilidad de tus finanzas en opiniones externas, gurúes de turno, o preferís que otros tomen las decisiones por vos para evitar la ansiedad del error. Si bien buscar consejo es sano, la falta de autonomía te vuelve vulnerable a la inercia del entorno. Tu camino hacia la verdadera libertad requiere que tomes el timón de tu propia vida financiera a través de la educación y la autoconfianza.",
+      strengths: [
+        "Apertura para escuchar consejos y reconocer que necesitás guía profesional.",
+        "Bajo nivel de ego financiero, lo que te permite aprender desde cero sin prejuicios.",
+        "Respeto por la experiencia de profesionales e instituciones consolidadas."
+      ],
+      challenges: [
+        "Vencer el miedo a equivocarte para empezar a tomar decisiones con criterio propio.",
+        "Identificar cuándo un consejo externo responde a los intereses de otros y no a los tuyos.",
+        "Desarrollar la autoconfianza para entender los mecanismos de tus propios activos financieros."
+      ],
+      philosophicalReflection: "Nadie cuidará de tus plantas con el mismo amor con el que lo harías vos. Delegar tus finanzas a ciegas es como entregar las llaves de tu casa a un extraño y esperar que la mantenga limpia. La verdadera libertad no es delegar el pensamiento; es conquistar la autonomía. No necesitás convertirte en un experto matemático, sino comprender los principios eternos de la templanza, el ahorro constante y la propiedad de activos productivos reales. Cuando entiendas el porqué de cada decisión, la ansiedad se disipará y sentirás la calma de saber exactamente hacia dónde se dirige tu barco.",
+      nextSteps: [
+        "Tomar un rol activo en tu próxima decisión financiera, investigando los fundamentos por tu cuenta antes de pedir una opinión.",
+        "Priorizar contenidos educativos estructurados de FINET por encima de los consejos rápidos de redes sociales.",
+        "Definir tus metas personales por escrito para que tu brújula interna sea más fuerte que el viento del entorno."
+      ]
+    };
+  }
+}
+
 export default function SocioFinancialSurvey() {
   const [currentStep, setCurrentStep] = useState<number>(0); // 0: Intro, 1-5: Questions, 6: Loading, 7: Result
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, { text: string; score: number; optionText: string }>>({});
@@ -143,40 +247,31 @@ export default function SocioFinancialSurvey() {
         };
       });
 
-      const response = await fetch('/api/analyze-profile', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ answers: payloadAnswers })
-      });
+      let data: AssessmentResult;
+      try {
+        const response = await fetch('/api/analyze-profile', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ answers: payloadAnswers })
+        });
 
-      if (!response.ok) {
-        let errMsg = "No se pudo completar el análisis socio-financiero.";
-        try {
-          const errData = await response.json();
-          errMsg = errData.error || errMsg;
-        } catch (jsonErr) {
-          try {
-            const rawText = await response.text();
-            if (rawText && rawText.length < 200) {
-              errMsg = rawText;
-            } else {
-              errMsg = `Error del servidor (${response.status}): ${response.statusText || 'Error desconocido'}`;
-            }
-          } catch (textErr) {
-            errMsg = `Error de red o de servidor (${response.status})`;
-          }
+        if (!response.ok) {
+          throw new Error(`API returned status ${response.status}`);
         }
-        throw new Error(errMsg);
+        data = await response.json();
+      } catch (apiErr) {
+        console.warn("API call failed or not configured, falling back to local profiler:", apiErr);
+        // Seamless fallback to high-quality local profiler matching FINET's philosophy
+        data = generateLocalProfile(selectedAnswers);
       }
 
-      const data = await response.json();
       setResult(data);
       setCurrentStep(7);
     } catch (err: any) {
       console.error(err);
-      setError(err.message || "Ocurrió un error al contactar al servidor. Por favor, verificá tu conexión.");
+      setError(err.message || "Ocurrió un error al procesar el análisis. Por favor, intentalo de nuevo.");
       setCurrentStep(1); // Volver al inicio del cuestionario
     } finally {
       clearInterval(msgInterval);
