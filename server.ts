@@ -98,7 +98,7 @@ Por favor, genera un informe de perfil socio-financiero estructurado en español
       };
 
       // Try multiple models to ensure high availability and bypass temporary high load errors
-      const modelsToTry = ["gemini-3.5-flash", "gemini-flash-latest"];
+      const modelsToTry = ["gemini-3.5-flash", "gemini-flash-latest", "gemini-2.5-flash"];
       const maxRetriesPerModel = 2;
       let lastError: any = null;
       let response: any = null;

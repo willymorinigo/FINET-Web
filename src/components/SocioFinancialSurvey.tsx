@@ -152,8 +152,23 @@ export default function SocioFinancialSurvey() {
       });
 
       if (!response.ok) {
-        const errData = await response.json().catch(() => ({}));
-        throw new Error(errData.error || "No se pudo completar el análisis socio-financiero.");
+        let errMsg = "No se pudo completar el análisis socio-financiero.";
+        try {
+          const errData = await response.json();
+          errMsg = errData.error || errMsg;
+        } catch (jsonErr) {
+          try {
+            const rawText = await response.text();
+            if (rawText && rawText.length < 200) {
+              errMsg = rawText;
+            } else {
+              errMsg = `Error del servidor (${response.status}): ${response.statusText || 'Error desconocido'}`;
+            }
+          } catch (textErr) {
+            errMsg = `Error de red o de servidor (${response.status})`;
+          }
+        }
+        throw new Error(errMsg);
       }
 
       const data = await response.json();
